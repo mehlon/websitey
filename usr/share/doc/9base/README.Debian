@@ -1,0 +1,9 @@
+9base for Debian
+----------------
+
+Please note that all manpages have subsection extension plan9, and are
+typeset with the plan9 macro package, so you need to use:
+
+  $ zcat /usr/share/man/man1/awk.1plan9.gz | /usr/lib/plan9/bin/troff -N -man
+
+to read the manpage of the plan9 awk.

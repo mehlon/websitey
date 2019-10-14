@@ -1,0 +1,21 @@
+# We use the rc shipped with the package, not the separately packaged one.
+9base: wrong-path-for-interpreter usr/*/troff/font/devutf/mkMAP (#!/usr/lib/plan9/bin/rc != /usr/bin/rc)
+9base: missing-dep-for-interpreter rc => rc (usr/*/troff/font/devutf/mkMAP)
+9base: wrong-path-for-interpreter usr/*/troff/tmac/sendcover (#!/usr/lib/plan9/bin/rc != /usr/bin/rc)
+9base: missing-dep-for-interpreter rc => rc (usr/*/troff/tmac/sendcover)
+
+# pbd does not make use of any protected glibc routines
+9base: hardening-no-fortify-functions usr/lib/plan9/bin/pbd 
+
+# This is a startup script
+9base: executable-not-elf-or-script usr/lib/plan9/etc/rcmain
+
+# Manual pages use the plan9 man macro package.
+# Therefore, they will not validate with Debian's man macros, or
+# groff. They render just fine with the appropriate macro package and
+# plan9-troff.
+9base: manpage-has-errors-from-man usr/share/man/man*/* macro `L' not defined
+9base: manpage-has-errors-from-man usr/share/man/man*/* macro `LR' not defined
+9base: manpage-has-errors-from-man usr/share/man/man*/* macro `CT' not defined
+9base: manpage-has-errors-from-man usr/share/man/man*/* macro `TF' not defined
+9base: manpage-has-errors-from-man usr/share/man/man*/* macro `9' not defined
